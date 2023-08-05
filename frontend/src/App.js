@@ -71,7 +71,7 @@ function App() {
                     <TrackList {...trackListProps} />
                 </div>
                 <footer className="app_footer">
-                    Source code on <a href="https://github.com/joeshub/react-808">on Github</a>, Built by <a href="http://seifi.org/">Joe Seifi</a> using React.js
+                    Based on UI at <a href="https://github.com/joeshub/react-808">on Github</a> by <a href="http://seifi.org/">Joe Seifi</a> using React.js
                 </footer>
             </main >
         </Provider>
