@@ -7,7 +7,7 @@
 ```
 pyenv virtualenv 3.10.8 rka-808
 pyenv activate rka-808
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Install ffmpeg (OSX)
