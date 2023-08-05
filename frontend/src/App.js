@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ToolBar from './components/Toolbar'
+import Download from './components/Download'
 import Steps from './components/Steps'
 import TrackList from './components/TrackList'
 import PlayHead from './components/PlayHead'
@@ -58,6 +59,16 @@ function App() {
         currentStepID
     }
 
+    const downloadProps = {
+        // setStartTime,
+        // setPastLapse,
+        // setBPM,
+        // isSequencePlaying,
+        // startTime,
+        // BPM
+        //need to be changed
+    }
+
     return (
         <Provider>
             <main className="app">
@@ -71,6 +82,7 @@ function App() {
                     <TrackList {...trackListProps} />
                 </div>
                 <footer className="app_footer">
+                    <Download {...downloadProps} />
                     Source code on <a href="https://github.com/joeshub/react-808">on Github</a>, Built by <a href="http://seifi.org/">Joe Seifi</a> using React.js
                 </footer>
             </main >

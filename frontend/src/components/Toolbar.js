@@ -31,13 +31,28 @@ const ToolBar = ({
         setBPM(e.target.value)
     }
 
+    function handleUpload(e) {
+        // setBPM(e.target.value)
+        // need to be changed
+    }
+
+    function handleGenerate(e) {
+        // setBPM(e.target.value)
+        // need to be changed
+    }
+
     return (
         <nav className="toolbar">
+            <button className="upload" onClick={handleUpload}>
+                <span>Upload</span>
+            </button>
+            <button className="generate" onClick={handleGenerate}>
+                <span>Generate</span>
+            </button>
             <button className="form_element button_stop" onClick={stopPlayback} aria-label="Stop">
                 <svg width="14" height="14" viewBox="0 0 14 14">
                     <rect className="button_icon_path" x="2" y="2" width="10" height="10" />
                 </svg>
-
             </button>
             <button className="form_element button_play_pause" onClick={togglePlayback} aria-label="Play / Pause">
                 <svg width="14" height="14" viewBox="8 8 20 20">
