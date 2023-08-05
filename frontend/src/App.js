@@ -83,7 +83,6 @@ function App() {
                 </div>
                 <footer className="app_footer">
                     <Download {...downloadProps} />
-                    Source code on <a href="https://github.com/joeshub/react-808">on Github</a>, Built by <a href="http://seifi.org/">Joe Seifi</a> using React.js
                 </footer>
             </main >
         </Provider>
