@@ -1,25 +1,24 @@
-# RKA-808 drum machine
+# RACK-808 drum machine
 
-## Installation
-
-## Python packages
+## Installation (linux)
 
 ```
+curl https://pyenv.run | bash
+
+# Put these 3 lines in your .bashrc
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+# Required for pyenv installation
+sudo apt-get install -y zlib1g-dev libssl-dev lzma-dev libsqlite3-dev libreadline6-dev libffi-dev libncurses-dev bzip2-dev
+pyenv install 3.10.8
+
 pyenv virtualenv 3.10.8 rka-808
 pyenv activate rka-808
 pip install requirements.txt
-```
 
-### Install ffmpeg (OSX)
-
-```
-brew update && brew upgrade
-brew install ffmpeg
-```
-
-### Install ffmpeg (Linux)
-
-```
+# For audio manipulation
 sudo apt-get install ffmpeg
 ```
 
