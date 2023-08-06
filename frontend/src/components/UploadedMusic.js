@@ -2,8 +2,11 @@ import React, { useContext, memo ,useState} from 'react'
 import { Context } from '../hooks/useStore'
 import './UploadedMusic.css'
 
+const INVERT_AUDIO_ENDPOINT = "http://34.86.80.211:8080/invert_audio"
+
 const UploadedMusic = ({}) => {
-    const[file,setFile] = useState()
+    const[file,setFile] = useState();
+    const[pending, setPending] = useState(false);
     const {  } = useContext(Context)
 
     function handleDownload(version) {
@@ -26,23 +29,31 @@ const UploadedMusic = ({}) => {
         });
     }
 
-    function handleUploadMusicFile() {
+    function handleUploadMusicFile(e) {
+        e.preventDefault();
+        if (pending) {
+            return;
+        }
+        setPending(true);
         const formData = new FormData();
         formData.append('file', file);
 
+        console.log("UPLOAD FILE");
+
         // Replace 'uploadUrl' with the actual endpoint to handle file upload
-        const uploadUrl = 'uploadUrl';
+        const uploadUrl = INVERT_AUDIO_ENDPOINT;
 
         fetch(uploadUrl, {
             method: 'POST',
             body: formData,
         })
-            .then((response) => response.json())
-            .then((result) => {
-                console.log('Upload success:', result);
-            // Perform any other actions after successful upload, if needed
+            .then((response) => {
+                setPending(false);
+                console.log("Inverted file!");
+                console.log(response.json());
             })
             .catch((error) => {
+                setPending(false);
                 console.error('Error uploading file:', error);
             });
     }
@@ -55,14 +66,12 @@ const UploadedMusic = ({}) => {
 
     return (
         <nav className="UploadedMusicBar">
-            {/* <div className="uploadHeader">
-                <h1 className="uploadTitle">Customize Your Own Music</h1>
-            </div>
-            <div class="line"></div> */}
             <form onSubmit={handleUploadMusicFile}>
                 <div className="form_container">
                     <input type="file" name="file" className="form_element" onChange={handleMusicFile} />
-                    <button className="form_element" type="submit">Generate from Uploaded Music</button>
+                    <button className="form_element" type="submit">{
+                        pending ? "Doing neural magic..." : "Generate from Uploaded Music"
+                    }</button>
                 </div>
             </form>
             <div className="optionChoice">

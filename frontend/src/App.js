@@ -74,7 +74,7 @@ function App() {
             <main className="app">
                 <header className="app_header">
                     <h1 className="app_title">R.A.C.K.</h1>
-                    <h3 className="app_text">Customize Your Own Music</h3>
+                    <h3 className="app_text">Neural Music Inverter 🧠</h3>
                     {/* <ToolBar {...toolBarProps} /> */}
                 </header>
                 <Steps count={totalSteps} />

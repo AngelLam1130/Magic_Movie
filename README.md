@@ -22,3 +22,9 @@ pip install requirements.txt
 sudo apt-get install ffmpeg
 ```
 
+## Run dev server
+
+```
+cd api/
+flask --app main run --host=0.0.0.0 --port=8080
+```
