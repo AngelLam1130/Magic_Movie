@@ -80,9 +80,9 @@ function App() {
                 <div className="app_content">
                     <PlayHead {...playHeadProps} />
                     <TrackList {...trackListProps} />
+                    <Download {...downloadProps} />
                 </div>
                 <footer className="app_footer">
-                    <Download {...downloadProps} />
                 </footer>
             </main >
         </Provider>
