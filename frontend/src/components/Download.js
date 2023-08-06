@@ -18,22 +18,22 @@ const Download = ({
 
     return (
         <nav className="downloadBar">
-            <button className="generate" onClick={handleGenerate}>Generate</button>
+            <button className="form_element" onClick={handleGenerate}>Generate</button>
             <div className="optionChoice">
                 <h3>Music Version 1</h3>
-                <button className="download" onClick={handleDownload}>
+                <button className="form_element" onClick={handleDownload}>
                     <span>Download</span>
                 </button>
             </div>
             <div className="optionChoice">
                 <h3>Music Version 2</h3>
-                <button className="download" onClick={handleDownload}>
+                <button className="form_element" onClick={handleDownload}>
                     <span>Download</span>
                 </button>
             </div>
             <div className="optionChoice">
                 <h3>Music Version 3</h3>
-                <button className="download" onClick={handleDownload}>
+                <button className="form_element" onClick={handleDownload}>
                     <span>Download</span>
                 </button>
             </div>

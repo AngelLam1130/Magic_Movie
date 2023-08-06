@@ -32,7 +32,7 @@ const ToolBar = ({
         setBPM(e.target.value)
     }
 
-    function handleUpload() {
+    function handleUploadMusicFile() {
         const formData = new FormData()
         formData.append('file',file)
         fetch(
@@ -52,7 +52,7 @@ const ToolBar = ({
         })
     }
 
-    function handleFile(event) {
+    function handleMusicFile(event) {
         setFile(event.target.files[0]);
         // Handle the selected file, e.g., upload it to the server or process it
         console.log(event.target.files[0]);
@@ -60,9 +60,9 @@ const ToolBar = ({
 
     return (
         <div className="toolbar">
-            <form onSubmit={handleUpload}>
-                <input type="file" name="file" onChange={handleFile} />
-                <button className="upload">Upload</button>
+            <form onSubmit={handleUploadMusicFile}>
+                <input type="file" name="file" className="form_element" onChange={handleMusicFile} />
+                <button className="form_element uploadButton">Upload Song</button>
             </form>
             <button className="form_element button_stop" onClick={stopPlayback} aria-label="Stop">
                 <svg width="14" height="14" viewBox="0 0 14 14">
