@@ -1,16 +1,20 @@
 from flask import Flask, jsonify, send_file
+from flask_cors import CORS, cross_origin
 import torch
 import tempfile
 import os
 
-from .model import load_model, invert_audio
+from model import load_model, invert_audio
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Main
 model, processor = load_model()
 
 @app.route("/")
+@cross_origin()
 def api_home():
     return jsonify({
         "message": "Welcome to R.A.C.K. API!"
@@ -18,6 +22,7 @@ def api_home():
 
 
 @app.route("/invert_audio", methods=["POST"])
+@cross_origin()
 def invert_audio():
     audio_input_file = request.files['file']
     save_dir = tempfile.TemporaryDirectory().name

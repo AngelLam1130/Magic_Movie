@@ -5,3 +5,4 @@ flask
 # for development
 jupyter
 ipython
+flask-cors
