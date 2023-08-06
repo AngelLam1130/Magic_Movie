@@ -1,5 +1,7 @@
 # R.A.C.K. Neural Audio Inverter
 
+[🖼️ Demo presentation](demo-presentation.pdf)
+
 ## Installation (linux)
 
 ```
@@ -28,3 +30,4 @@ sudo apt-get install ffmpeg
 cd api/
 flask --app main run --host=0.0.0.0 --port=8080
 ```
+
