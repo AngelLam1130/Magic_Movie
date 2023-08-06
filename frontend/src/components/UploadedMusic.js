@@ -5,7 +5,8 @@ import './UploadedMusic.css'
 const INVERT_AUDIO_ENDPOINT = "http://34.86.80.211:8080/invert_audio"
 
 const UploadedMusic = ({}) => {
-    const[file,setFile] = useState();
+    const[file, setFile] = useState();
+    const[audioUrl, setAudioUrl] = useState();
     const[pending, setPending] = useState(false);
     const {  } = useContext(Context)
 
@@ -38,7 +39,7 @@ const UploadedMusic = ({}) => {
         const formData = new FormData();
         formData.append('file', file);
 
-        console.log("UPLOAD FILE");
+        const ctx = new AudioContext();
 
         // Replace 'uploadUrl' with the actual endpoint to handle file upload
         const uploadUrl = INVERT_AUDIO_ENDPOINT;
@@ -47,10 +48,12 @@ const UploadedMusic = ({}) => {
             method: 'POST',
             body: formData,
         })
-            .then((response) => {
+            .then(data => data.arrayBuffer())
+            .then(arrayBuffer => {
+                const blob = new Blob([arrayBuffer], { type: "audio/wav" });
+                const audioUrl = window.URL.createObjectURL(blob);
+                setAudioUrl(audioUrl);
                 setPending(false);
-                console.log("Inverted file!");
-                console.log(response.json());
             })
             .catch((error) => {
                 setPending(false);
@@ -74,6 +77,12 @@ const UploadedMusic = ({}) => {
                     }</button>
                 </div>
             </form>
+            { audioUrl && (
+                <audio id="audio" controls download>
+                    <source src={audioUrl} type="audio/wav" />
+                </audio>
+            )}
+            {/*
             <div className="optionChoice">
                 <h3>Music Version 1</h3>
                 <button className="form_element" onClick={() => handleDownload(1)}>Download</button>
@@ -86,6 +95,7 @@ const UploadedMusic = ({}) => {
                 <h3>Music Version 3</h3>
                 <button className="form_element" onClick={() => handleDownload(3)}>Download</button>
             </div>
+            */}
         </nav>
     )
 }
