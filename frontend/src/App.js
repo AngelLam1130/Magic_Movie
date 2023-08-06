@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ToolBar from './components/Toolbar'
-import Download from './components/Download'
+import UploadedMusic from './components/UploadedMusic'
 import Steps from './components/Steps'
 import TrackList from './components/TrackList'
 import PlayHead from './components/PlayHead'
@@ -59,7 +59,7 @@ function App() {
         currentStepID
     }
 
-    const downloadProps = {
+    const uploadedMusicProps = {
         // setStartTime,
         // setPastLapse,
         // setBPM,
@@ -80,7 +80,7 @@ function App() {
                 <div className="app_content">
                     <PlayHead {...playHeadProps} />
                     <TrackList {...trackListProps} />
-                    <Download {...downloadProps} />
+                    <UploadedMusic {...uploadedMusicProps} />
                 </div>
                 <footer className="app_footer">
                 </footer>
