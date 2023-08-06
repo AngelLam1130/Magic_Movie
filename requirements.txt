@@ -1,6 +1,6 @@
 torch>=2.0
 git+https://git@github.com/facebookresearch/audiocraft#egg=audiocraft
-flask
+flask==2.2.5
 
 # for development
 jupyter

@@ -27,7 +27,7 @@ def api_home():
 
 @app.route("/invert_audio", methods=["POST"])
 @cross_origin()
-def invert_audio():
+def invert_audio_request():
     audio_input_file = request.files['file']
 
     with tempfile.TemporaryDirectory() as save_dir:
