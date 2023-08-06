@@ -58,6 +58,50 @@ const ToolBar = ({
         console.log(event.target.files[0]);
       }
 
+    function convertSequenceListToMatrix(list) {
+        const matrices = {};
+
+        for (const sequence of list) {
+            const title = sequence.title;
+            const matrix = [];
+            for (const track of sequence.trackList) {
+                let zeroArray = new Array(sequence.noteCount).fill(0);
+                const notes = track.onNotes;
+                for (const note of notes) {
+                    zeroArray[note] = 1;
+                }
+                matrix.push(zeroArray);
+            }
+            matrices[title] = matrix;
+        }
+        return matrices;
+    }
+
+    function sendToBackend() {
+
+        let matrices = convertSequenceListToMatrix(sequenceList);
+        console.log(matrices);
+
+        // fetch('/myserver.endpoint', {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //       // Add parameters here
+        //     })
+        //     headers: {
+        //       'Content-type': 'application/json; charset=UTF-8',
+        //     },
+        //   })
+        //      .then((response) => response.json())
+        //      .then((data) => {
+        //         console.log(data);
+        //         // Handle data
+        //      })
+        //      .catch((err) => {
+        //         console.log(err.message);
+        //      });
+    }
+    console.log(sequenceList)
+
     return (
         <div className="toolbar">
             <form onSubmit={handleUploadMusicFile}>
@@ -74,6 +118,9 @@ const ToolBar = ({
                     {isSequencePlaying && <path className="button_icon_path" id="pause-icon" data-state="playing" d="M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26" />}
                     {!isSequencePlaying && <path className="button_icon_path" id="play-icon" data-state="paused" d="M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28" />}
                 </svg>
+            </button>
+            <button className="form_element button_play_pause" onClick={sendToBackend} aria-label="Upload">
+                <rect className="button_icon_path" x="2" y="2" width="10" height="10" />
             </button>
             <input className="form_element input_bpm" id="bpm" type="text" value={BPM} onChange={updateBPM} />
             <label className="label_bpm" htmlFor="bpm">BPM</label>
