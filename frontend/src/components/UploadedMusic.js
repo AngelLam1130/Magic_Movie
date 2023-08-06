@@ -77,7 +77,7 @@ const UploadedMusic = ({}) => {
                     }</button>
                 </div>
             </form>
-            { audioUrl && (
+            { audioUrl && (!pending) (
                 <audio id="audio" controls download>
                     <source src={audioUrl} type="audio/wav" />
                 </audio>
