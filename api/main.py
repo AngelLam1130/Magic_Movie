@@ -25,13 +25,15 @@ def api_home():
 @cross_origin()
 def invert_audio():
     audio_input_file = request.files['file']
-    save_dir = tempfile.TemporaryDirectory().name
-    save_path = os.path.join(save_dir, audio_input_file.filename)
 
-    audio_input_file.save(save_path)
-    
+    with tempfile.TemporaryDirectory() as save_dir:
+        input_audio_path = os.path.join(save_dir.name, audio_input_file.filename)
+        audio_input_file.save(input_audio_path)
 
-    output_file = invert_audio(
-        model, processor, save_path, normalize=True, flip_input=True, flip_output=False)
+        output_audio_path = os.path.join(save_dir.name, "inverted-" + audio_input_file.filename)
 
-    return send_file(output_file)
+        output_file = invert_audio(
+            model, processor, input_audio_path, out_path=output_audio_path,
+            normalize=True, flip_input=True, flip_output=False)
+
+        return send_file(output_file)

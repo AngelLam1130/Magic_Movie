@@ -5,7 +5,6 @@ import datetime
 import IPython
 import os
 import julius
-import tempfile
 
 from transformers import EncodecModel
 from typing import List, Optional, Tuple, Union
@@ -57,7 +56,9 @@ def load_model():
     return model, processor
 
 @torch.no_grad()
-def invert_audio(model, processor, audio_file_path, normalize=True, flip_input=True, flip_output=False):
+def invert_audio(
+        model, processor, audio_file_path, out_path,
+        normalize=True, flip_input=True, flip_output=False):
 
     model.config.normalize = normalize
 
@@ -115,10 +116,10 @@ def invert_audio(model, processor, audio_file_path, normalize=True, flip_input=T
     decoded_wav = audio_values.squeeze(0).to("cpu")
 
     print("Saving output file...")
-    out_path = audio_write(
-        tempfile.NamedTemporaryFile().name,
+    out_path_ = audio_write(
+        out_path,
         sample_rate=MODEL_SAMPLING_RATE,
         wav=decoded_wav,
         normalize=False)
 
-    return out_path
+    return out_path_
