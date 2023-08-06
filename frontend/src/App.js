@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ToolBar from './components/Toolbar'
+import UploadedMusic from './components/UploadedMusic'
 import Steps from './components/Steps'
 import TrackList from './components/TrackList'
 import PlayHead from './components/PlayHead'
@@ -58,6 +59,16 @@ function App() {
         currentStepID
     }
 
+    const uploadedMusicProps = {
+        // setStartTime,
+        // setPastLapse,
+        // setBPM,
+        // isSequencePlaying,
+        // startTime,
+        // BPM
+        //need to be changed
+    }
+
     return (
         <Provider>
             <main className="app">
@@ -69,9 +80,9 @@ function App() {
                 <div className="app_content">
                     <PlayHead {...playHeadProps} />
                     <TrackList {...trackListProps} />
+                    <UploadedMusic {...uploadedMusicProps} />
                 </div>
                 <footer className="app_footer">
-                    Based on UI at <a href="https://github.com/joeshub/react-808">on Github</a> by <a href="http://seifi.org/">Joe Seifi</a> using React.js
                 </footer>
             </main >
         </Provider>
