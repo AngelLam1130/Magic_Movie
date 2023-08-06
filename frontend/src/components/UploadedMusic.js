@@ -38,9 +38,15 @@ const UploadedMusic = ({}) => {
 
     return (
         <nav className="UploadedMusicBar">
+            {/* <div className="uploadHeader">
+                <h1 className="uploadTitle">Customize Your Own Music</h1>
+            </div>
+            <div class="line"></div> */}
             <form onSubmit={handleUploadMusicFile}>
-                <input type="file" name="file" className="form_element" onChange={handleMusicFile} />
-                <button className="form_element uploadButton">Generate from Uploaded Music</button>
+                <div className="form_container">
+                    <input type="file" name="file" className="form_element" onChange={handleMusicFile} />
+                    <button className="form_element">Generate from Uploaded Music</button>
+                </div>
             </form>
             <div className="optionChoice">
                 <h3>Music Version 1</h3>

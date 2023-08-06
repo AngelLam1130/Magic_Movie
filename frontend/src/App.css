@@ -39,6 +39,11 @@ html {
   flex: 1;
 }
 
+.app_text{
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
 .app_content {
   display: flex;
   flex-direction: column;

@@ -73,13 +73,14 @@ function App() {
         <Provider>
             <main className="app">
                 <header className="app_header">
-                    <h1 className="app_title">RACK-808</h1>
-                    <ToolBar {...toolBarProps} />
+                    <h1 className="app_title">R.A.C.K.</h1>
+                    <h3 className="app_text">Customize Your Own Music</h3>
+                    {/* <ToolBar {...toolBarProps} /> */}
                 </header>
                 <Steps count={totalSteps} />
                 <div className="app_content">
-                    <PlayHead {...playHeadProps} />
-                    <TrackList {...trackListProps} />
+                    {/* <PlayHead {...playHeadProps} />
+                    <TrackList {...trackListProps} /> */}
                     <UploadedMusic {...uploadedMusicProps} />
                 </div>
                 <footer className="app_footer">

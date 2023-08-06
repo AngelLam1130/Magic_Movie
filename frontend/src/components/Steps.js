@@ -8,7 +8,7 @@ const Steps = ({ count = 0 }) => {
 
     return (
         <div className="steps">
-            {content}
+            {/* {content} */}
         </div>
     )
 }

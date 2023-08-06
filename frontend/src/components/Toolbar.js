@@ -78,7 +78,7 @@ const ToolBar = ({
 
     return (
         <div className="toolbar">
-            <button className="form_element button_generate" onClick={generateFromMusic} aria-label="Generate From Matrix">
+            <button className="button_generate" onClick={generateFromMusic} aria-label="Generate From Matrix">
                 GENERATE
             </button>
             <button className="form_element button_stop" onClick={stopPlayback} aria-label="Stop">

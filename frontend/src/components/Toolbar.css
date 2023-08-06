@@ -30,7 +30,7 @@
   }
 
   .button_generate{
-      margin-left: var(--spacer);
+    margin-left: var(--spacer);
     text-transform: uppercase;
     border-radius: 0;
     -webkit-appearance: none;
@@ -40,6 +40,16 @@
     background-repeat: no-repeat;
     background-size: 16px;
     padding: 0 10px 0 10px;
+
+    background: transparent;
+    border: 1px solid white;
+    margin-left: calc(var(--spacer) / 2);
+    height: var(--form-element-height);
+    box-sizing: border-box;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--color-fg)
   }
 
   .button_icon_path {
@@ -65,5 +75,6 @@
     background-position: 95% 50%;
     background-repeat: no-repeat;
     background-size: 16px;
-    padding: 0 40px 0 10px;
+    padding: 0 10px 0 10px;
+    font-size: 0.9rem;
   }
