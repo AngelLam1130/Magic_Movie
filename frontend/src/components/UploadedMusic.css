@@ -1,0 +1,31 @@
+
+  .UploadedMusicBar {
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .optionChoice {
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  h3{
+    color: #fff;
+  }
+
+  .form_element {
+    background: transparent;
+    border: 1px solid var(--color-dark-grey);
+    margin-left: calc(var(--spacer) / 2);
+    height: var(--form-element-height);
+    box-sizing: border-box;
+    font-weight: 800;
+    font-size: 1.05rem;
+    text-align: center;
+    color: var(--color-fg)
+  }
