@@ -57,12 +57,12 @@ def load_model():
 
 @torch.no_grad()
 def invert_audio(
-        model, processor, audio_file_path, out_path,
+        model, processor, input_audio_path, out_path,
         normalize=True, flip_input=True, flip_output=False):
 
     model.config.normalize = normalize
 
-    audio_sample_1, sampling_rate_1 = audio_read(audio_file_path)
+    audio_sample_1, sampling_rate_1 = audio_read(input_audio_path)
     if sampling_rate_1 != MODEL_SAMPLING_RATE:
         audio_sample_1 = julius.resample_frac(audio_sample_1, sampling_rate_1, MODEL_SAMPLING_RATE)
 

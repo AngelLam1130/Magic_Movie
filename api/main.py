@@ -33,7 +33,7 @@ def invert_audio():
         output_audio_path = os.path.join(save_dir, "inverted-" + audio_input_file.filename)
 
         output_file = invert_audio(
-            model, processor, input_audio_path, out_path=output_audio_path,
+            model, processor, input_audio_path, output_audio_path,
             normalize=True, flip_input=True, flip_output=False)
 
         return send_file(output_file)
