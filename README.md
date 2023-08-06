@@ -1,4 +1,4 @@
-# RACK-808 drum machine
+# R.A.C.K. Neural Audio Inverter
 
 ## Installation (linux)
 
