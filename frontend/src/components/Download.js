@@ -1,47 +1,24 @@
 import React, { useContext, memo } from 'react'
-import { sequenceList } from '../constants/config'
 import { Context } from '../hooks/useStore'
 import './Download.css'
 
 const Download = ({
-    setStartTime,
-    setPastLapse,
-    setBPM,
-    isSequencePlaying,
-    startTime,
-    BPM
-    // need to be changed
+    
 }) => {
-    const { sequence: { id: selectedSequenceID }, selectSequence } = useContext(Context)
-
-    function togglePlayback() {
-        if (isSequencePlaying) {
-            setPastLapse(l => l + performance.now() - startTime)
-            setStartTime(null)
-        } else {
-            setStartTime(performance.now())
-        }
-    }
-
-    function stopPlayback() {
-        setPastLapse(0)
-        setStartTime(null)
-    }
-
-    function updateBPM(e) {
-        setBPM(e.target.value)
-    }
+    const {  } = useContext(Context)
 
     function handleDownload(e) {
-        setBPM(e.target.value)
+        //need to be changed
     }
 
     function handleGenerate(e) {
-        setBPM(e.target.value)
+        // setBPM(e.target.value)
+        // need to be changed
     }
 
     return (
         <nav className="downloadBar">
+            <button className="generate" onClick={handleGenerate}>Generate</button>
             <div className="optionChoice">
                 <h3>Music Version 1</h3>
                 <button className="download" onClick={handleDownload}>

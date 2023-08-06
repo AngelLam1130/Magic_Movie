@@ -1,4 +1,4 @@
-import React, { useContext, memo } from 'react'
+import React, { useContext, memo, useState } from 'react'
 import { sequenceList } from '../constants/config'
 import { Context } from '../hooks/useStore'
 import './Toolbar.css'
@@ -11,6 +11,7 @@ const ToolBar = ({
     startTime,
     BPM
 }) => {
+    const[file,setFile] = useState()
     const { sequence: { id: selectedSequenceID }, selectSequence } = useContext(Context)
 
     function togglePlayback() {
@@ -31,24 +32,38 @@ const ToolBar = ({
         setBPM(e.target.value)
     }
 
-    function handleUpload(e) {
-        // setBPM(e.target.value)
-        // need to be changed
+    function handleUpload() {
+        const formData = new FormData()
+        formData.append('file',file)
+        fetch(
+            'url',
+            {
+                method:"POST",
+                body:formData
+            }
+        ).then((response) => response.json())
+        .then(
+            (result)=>{
+                console.log('success',result)
+            }
+        )
+        .catch(error => {
+            console.error("Error:",error)
+        })
     }
 
-    function handleGenerate(e) {
-        // setBPM(e.target.value)
-        // need to be changed
-    }
+    function handleFile(event) {
+        setFile(event.target.files[0]);
+        // Handle the selected file, e.g., upload it to the server or process it
+        console.log(event.target.files[0]);
+      }
 
     return (
-        <nav className="toolbar">
-            <button className="upload" onClick={handleUpload}>
-                <span>Upload</span>
-            </button>
-            <button className="generate" onClick={handleGenerate}>
-                <span>Generate</span>
-            </button>
+        <div className="toolbar">
+            <form onSubmit={handleUpload}>
+                <input type="file" name="file" onChange={handleFile} />
+                <button className="upload">Upload</button>
+            </form>
             <button className="form_element button_stop" onClick={stopPlayback} aria-label="Stop">
                 <svg width="14" height="14" viewBox="0 0 14 14">
                     <rect className="button_icon_path" x="2" y="2" width="10" height="10" />
@@ -81,7 +96,7 @@ const ToolBar = ({
                     })
                 }
             </select>
-        </nav>
+        </div>
     )
 }
 
