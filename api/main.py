@@ -27,10 +27,10 @@ def invert_audio():
     audio_input_file = request.files['file']
 
     with tempfile.TemporaryDirectory() as save_dir:
-        input_audio_path = os.path.join(save_dir.name, audio_input_file.filename)
+        input_audio_path = os.path.join(save_dir, audio_input_file.filename)
         audio_input_file.save(input_audio_path)
 
-        output_audio_path = os.path.join(save_dir.name, "inverted-" + audio_input_file.filename)
+        output_audio_path = os.path.join(save_dir, "inverted-" + audio_input_file.filename)
 
         output_file = invert_audio(
             model, processor, input_audio_path, out_path=output_audio_path,
