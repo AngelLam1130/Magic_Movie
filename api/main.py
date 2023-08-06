@@ -10,8 +10,12 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-# Main
-model, processor = load_model()
+preloaded = {}
+
+@app.before_first_request
+def my_func():
+    preloaded["model"], preloaded["processor"] = load_model()
+
 
 @app.route("/")
 @cross_origin()
@@ -33,7 +37,7 @@ def invert_audio():
         output_audio_path = os.path.join(save_dir, "inverted-" + audio_input_file.filename)
 
         output_file = invert_audio(
-            model, processor, input_audio_path, output_audio_path,
-            normalize=True, flip_input=True, flip_output=False)
+            preloaded["model"], preloaded["processor"],
+            input_audio_path, output_audio_path)
 
         return send_file(output_file)
