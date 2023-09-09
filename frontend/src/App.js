@@ -14,6 +14,7 @@ function App() {
             }}
             wallets={['compass', 'fin']}>
 	            <Home />
+                <h1>Welcome to Magic Movie</h1>
 	    </SeiWalletProvider>
     );
 }
