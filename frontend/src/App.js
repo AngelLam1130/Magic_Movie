@@ -16,6 +16,7 @@ function App() {
 	            <Home />
                 <h1>Welcome to Magic Movie</h1>
                 <h1>Welcome to Magic Movie</h1>
+                <h1>Welcome to Magic Movie</h1>
 	    </SeiWalletProvider>
     );
 }
