@@ -2,12 +2,12 @@ import { useCallback, useEffect, useState } from 'react';
 import React from 'react'
 import { useCosmWasmClient, useSigningCosmWasmClient, useWallet, WalletConnectButton } from '@sei-js/react';
 
-const CONTRACT_ADDRESS = 'sei18g4g35mhy5s88nshpa6flvpj9ex6u88l6mhjmzjchnrfa7xr00js0gswru'; // (atlantic-2 example) sei18g4g35mhy5s88nshpa6flvpj9ex6u88l6mhjmzjchnrfa7xr00js0gswru
+const CONTRACT_ADDRESS = 'sei19e7hhqk3hrscj46mrt3d04r8fuh90ulgmc48k7suksf3jy6dyekqnsxds8'; // (atlantic-2 example) sei18g4g35mhy5s88nshpa6flvpj9ex6u88l6mhjmzjchnrfa7xr00js0gswru
 
 function Home() {
-	const [count, setCount] = useState<number | undefined>(2);
-	const [error, setError] = useState<string>('');
-	const [isIncrementing, setIsIncrementing] = useState<boolean>(false);
+	const [count, setCount] = useState(2);
+	const [error, setError] = useState('');
+	const [isIncrementing, setIsIncrementing] = useState(false);
 
 	// Helpful hook for getting the currently connected wallet and chain info
 	const { connectedWallet, accounts } = useWallet();
