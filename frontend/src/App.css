@@ -8,41 +8,42 @@ html {
   color: var(--color-fg)
 }
 
-.app {
-  margin-left: auto;
-  margin-right: auto;
-  width: var(--app-max-width);
-  visibility: var(--app-visibility);
-  background-color: var(--color-bg);
-  padding: 20px;
+.app,
+.app_footer {
+  width: 100%;
+  height: 100vh; /* 使用视口高度来实现全屏效果 */
+  background-color: #e9967a;
+  padding: 100;
 }
 
-@media only screen and (min-width: 820px) {
+/* @media only screen and (min-width: 820px) {
   .app {
     margin-top: var(--spacer);
     margin-bottom: var(--spacer);
   }
-}
+} */
 
-.app_header {
+/* .app_header {
   display: flex;
   align-items: center;
   justify-content: stretch;
   margin-bottom: calc(var(--spacer) * 1);
   margin-left: var(--spacer);
   margin-right: var(--spacer);
-}
+} */
 
 .app_title {
-  font-size: 2.2rem;
+  text-align: center; /* 水平居中 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
   font-weight: 900;
   flex: 1;
+  position: center;
 }
 
-.app_text{
-  font-size: 1.5rem;
-  font-weight: 900;
-}
 
 .app_content {
   display: flex;
